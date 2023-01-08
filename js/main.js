@@ -34,7 +34,9 @@ const cardanoPrueba1 = 'https://cardano-mainnet.tangocrypto.com/fe41f4e47c024096
 
 const cardanoPrueba2 = 'https://cardano-mainnet.tangocrypto.com/fe41f4e47c0240969d60630a77711948/v1/addresses/addr1q8nmgfl8n6kgqcnxn66ptg6pv96qqm42t8zyz0ld8l6eyv8v6snchtuhy9w39ax6eppasafuyq3xxxene2y6ddjd7fnsh5paz2/assets'; */
 
-const policyIdAsset="5331849fbcb61fda1410c9c8228271fe85b24090df1c9a0c19fb0ff2";
+const idErgo = "eVOTE2";
+
+const policyIdAsset="7f8852f645cc6b38ffabee1b45dcb2ea1ab1e2ca10f86c916e88e53d";
 
 const addressCardano1 ='https://cardano-mainnet.tangocrypto.com/fe41f4e47c0240969d60630a77711948/v1/addresses/addr1q80md4t6xacfxzvm5ak903gmmed0he3d0k3x4ylxwcvy3qs5jtjeq8d8xnq59jx4c9yrt9xr6xsn0srmdy2ghgtth72qsat083/assets';
 
@@ -52,8 +54,7 @@ async function countErgo1(){
         const data = await response.json()
         const tokens = data.tokens
         for(i=0; i<tokens.length;i++){
-            let index = tokens[i].name.indexOf("eVOTE2")
-            //let index = tokens[i].name.indexOf("eTOSI")
+            let index = tokens[i].name.indexOf(idErgo)
             if(index == 0){
                 token = tokens[i]
                 cant = (tokens[i].amount)/1000000;
@@ -75,8 +76,7 @@ async function countErgo2(){
         const data = await response.json()
         const tokens = data.tokens
         for(i=0; i<tokens.length;i++){
-            //let index = tokens[i].name.indexOf("eVOTE2")
-            let index = tokens[i].name.indexOf("eTOSI")
+            let index = tokens[i].name.indexOf(idErgo)
             if(index == 0){
                 token = tokens[i]
                 cant2 = (tokens[i].amount)/1000000;
