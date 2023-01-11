@@ -26,21 +26,14 @@ window.addEventListener("load", function(){
     }
 })
 
-/* const ergoPrueba = "https://api.ergoplatform.com/api/v1/addresses/9iLZJ7uEkve8vLphQ7jroUddYu5FWoLvGoeRtYYVvMeVrqWfc8u/balance/confirmed";
-
-const ergoPrueba2 = "https://api.ergoplatform.com/api/v1/addresses/9g6Rke6UEaTBZtyCFx6rASQpDn4C5puP7P82SJERRjf6Jdr4tG9/balance/confirmed";
-
-const cardanoPrueba1 = 'https://cardano-mainnet.tangocrypto.com/fe41f4e47c0240969d60630a77711948/v1/addresses/addr1q9r852dhp45umey759kyxrrrh9xkcvwqssm7lcsk8zm28n3kw5ywq4rfx9txfj6deyjzz4zyfq0y2huntp2u8zgccsfqmcacnc/assets';
-
-const cardanoPrueba2 = 'https://cardano-mainnet.tangocrypto.com/fe41f4e47c0240969d60630a77711948/v1/addresses/addr1q8nmgfl8n6kgqcnxn66ptg6pv96qqm42t8zyz0ld8l6eyv8v6snchtuhy9w39ax6eppasafuyq3xxxene2y6ddjd7fnsh5paz2/assets'; */
 
 const idErgo = "eVOTE2";
 
 const policyIdAsset="7f8852f645cc6b38ffabee1b45dcb2ea1ab1e2ca10f86c916e88e53d";
 
-const addressCardano1 ='https://cardano-mainnet.tangocrypto.com/fe41f4e47c0240969d60630a77711948/v1/addresses/addr1q80md4t6xacfxzvm5ak903gmmed0he3d0k3x4ylxwcvy3qs5jtjeq8d8xnq59jx4c9yrt9xr6xsn0srmdy2ghgtth72qsat083/assets';
+const addressCardano1 ='https://cardano-mainnet.tangocrypto.com/{APP ID}/v1/addresses/addr1q80md4t6xacfxzvm5ak903gmmed0he3d0k3x4ylxwcvy3qs5jtjeq8d8xnq59jx4c9yrt9xr6xsn0srmdy2ghgtth72qsat083/assets';
 
-const addressCardano2 = 'https://cardano-mainnet.tangocrypto.com/fe41f4e47c0240969d60630a77711948/v1/addresses/addr1qyngymtfrvzvwrueadytaeufmv0ymqc3feytlfqkr32uvpjml6tmvatgluk5yd7lu04dutqg4rylx9htrxrvsva29r6szjqama/assets';
+const addressCardano2 = 'https://cardano-mainnet.tangocrypto.com/{APP ID}/v1/addresses/addr1qyngymtfrvzvwrueadytaeufmv0ymqc3feytlfqkr32uvpjml6tmvatgluk5yd7lu04dutqg4rylx9htrxrvsva29r6szjqama/assets';
 
 const addressErgo1 = "https://api.ergoplatform.com/api/v1/addresses/9hC3QcUYK1vwNEvpjrPGC4q1egU8ydUCXLC31a58D1dWQ9wLN3o/balance/confirmed";
 
@@ -57,8 +50,8 @@ async function countErgo1(){
             let index = tokens[i].name.indexOf(idErgo)
             if(index == 0){
                 token = tokens[i]
-                cant = (tokens[i].amount)/1000000;
-                cant = new Intl.NumberFormat("de-DE").format(cant);
+                cant = ((tokens[i].amount)/1000000).toFixed();
+                cant = new Intl.NumberFormat("en").format(cant);
                 break
             }
             }
@@ -79,8 +72,8 @@ async function countErgo2(){
             let index = tokens[i].name.indexOf(idErgo)
             if(index == 0){
                 token = tokens[i]
-                cant2 = (tokens[i].amount)/1000000;
-                cant2 = new Intl.NumberFormat("de-DE").format(cant2);
+                cant2 = ((tokens[i].amount)/1000000).toFixed();
+                cant2 = new Intl.NumberFormat("en").format(cant2);
                 break
             }
             }
@@ -90,7 +83,7 @@ async function countErgo2(){
     vote.innerHTML=cant2;
 }
 
-const options = {method: 'GET', headers: {'Content-Type': 'application/json', 'x-api-key': 'cc82fdb81f8146b294f99cd5f983991f'}};
+const options = {method: 'GET', headers: {'Content-Type': 'application/json', 'x-api-key': '{API KEY}'}};
 
 async function countCardano1(){
     let vote = document.getElementById("cardano1")
@@ -104,7 +97,7 @@ async function countCardano1(){
             if(index==0){
                 token = tokens[i];
                 cantToken = token.quantity;
-                cantToken = new Intl.NumberFormat("de-DE").format(cantToken);
+                cantToken = new Intl.NumberFormat("en").format(cantToken);
                 break
             }
         }
@@ -127,7 +120,7 @@ async function countCardano2(){
             if(index==0){
                 token = tokens[i];
                 cantToken2 = token.quantity;
-                cantToken2 = new Intl.NumberFormat("de-DE").format(cantToken2);
+                cantToken2 = new Intl.NumberFormat("en").format(cantToken2);
                 break
             }
         }
